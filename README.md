@@ -8,11 +8,11 @@ The project uses Docker to build an independent and reproducible runtime environ
 
 This README provides detailed instructions on how to clone the repository, download the dataset, configure the runtime environment, and how to build and run the model using the Dockerfiles for Python and R.
 
-**Reproducing the project does not require installing Python, R or related dependencies locally. Just install Git, Docker, and download the Titanic dataset. **
+**Reproducing the project does not require installing Python, R or related dependencies locally. Just install Git, Docker, and download the Titanic dataset.** 
 
 ## 2. Dataset
 
-This project uses the Titanic - Machine Learning from Disaster dataset provided by Kaggle. 
+This project uses the Titanic - Machine Learning from Disaster dataset provided by Kaggle.
 
 **Data Download Address:**
 
@@ -35,8 +35,8 @@ Among them:
 To avoid uploading the original data to GitHub, the project excludes CSV data files through `.gitignore`.
 
 ## 3. Project Structure
-```text
 
+```text
 Data-Engineering-titanic-disaster/
 ├── .github/
 │   └── CODEOWNERS
@@ -82,8 +82,8 @@ Before model training, the following preprocessing steps are carried out:
 1. Select four predictive features from the original dataset.
 2. Fill in the missing values of Age and Fare with the median.
 3. Encode Sex as a numerical variable:
-- male = 0
-- female = 1
+   - male = 0
+   - female = 1
 4. Check if there are still missing values in the processed input features.
 5. Use "Survived" as the target variable for the model.
 
@@ -236,10 +236,10 @@ The final directory structure should be as follows:
 ```text
 src/
 └── data/
-├── .gitkeep
-├── train.csv
-├── test.csv
-└── gender_submission.csv
+    ├── .gitkeep
+    ├── train.csv
+    ├── test.csv
+    └── gender_submission.csv
 ```
 
 Notes:
@@ -314,8 +314,8 @@ In the Terminal of macOS or Linux, execute:
 
 ```bash
 docker run --rm \
--v "$(pwd)/src/data:/app/data:ro" \
-titanic-python
+  -v "$(pwd)/src/data:/app/data:ro" \
+  titanic-python
 ```
 
 Command Description:
@@ -410,8 +410,8 @@ Execute the following command in the Terminal on macOS or Linux:
 
 ```bash
 docker run --rm \
--v "$(pwd)/src/data:/app/data:ro" \
-titanic-r
+  -v "$(pwd)/src/data:/app/data:ro" \
+  titanic-r
 ```
 
 The same as the Python model, this command will mount the local data folder into the Docker container.
@@ -632,24 +632,24 @@ Put `train.csv` and `test.csv` into:
 src/data/
 ```
 
-Step 3: Build and Run Python
+### Step 3: Build and Run Python
 
 ```bash
 docker build -t titanic-python ./src/python
 
 docker run --rm \
--v "$(pwd)/src/data:/app/data:ro" \
-titanic-python
+  -v "$(pwd)/src/data:/app/data:ro" \
+  titanic-python
 ```
 
-Step 4: Build and Run R
+### Step 4: Build and Run R
 
 ```bash
 docker build -t titanic-r ./src/r
 
 docker run --rm \
--v "$(pwd)/src/data:/app/data:ro" \
-titanic-r
+  -v "$(pwd)/src/data:/app/data:ro" \
+  titanic-r
 ```
 
 After completing the above operations, both programs will automatically execute and the training, prediction and accuracy results will be output in the Terminal.
