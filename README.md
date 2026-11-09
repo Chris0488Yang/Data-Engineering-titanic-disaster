@@ -35,6 +35,7 @@ Among them:
 To avoid uploading the original data to GitHub, the project excludes CSV data files through `.gitignore`.
 
 ```text
+
 Data-Engineering-titanic-disaster/
 ├── .github/
 │   └── CODEOWNERS
@@ -47,6 +48,7 @@ Data-Engineering-titanic-disaster/
 │   │   └── titanic_model.py
 │   └── r/
 │       ├── Dockerfile
+│       ├── install_packages.R
 │       └── titanic_model.R
 ├── .gitignore
 └── README.md
@@ -390,12 +392,14 @@ docker build -t titanic-r ./src/r
 
 This command will:
 
-1. Read `src/r/Dockerfile`.
-2. Use rocker/r-ver:4.4.2 as the base image.
+1. Read the file `src/r/Dockerfile`.
+2. Use `rocker/r-ver:4.4.2` as the base image.
 3. Set `/app` as the working directory.
-4. Copy the R script to the Docker image.
-5. Configure the Rscript execution command.
-6. Create a Docker image named `titanic-r`.
+4. Copy and execute `install_packages.R`.
+5. Since this project only uses R standard packages, no additional third-party dependencies need to be installed.
+6. Copy `titanic_model.R` into the Docker image.
+7. Configure the `Rscript` run command.
+8. Create a Docker image named `titanic-r`.
 
 After the build is successful, proceed to the next step.
 
