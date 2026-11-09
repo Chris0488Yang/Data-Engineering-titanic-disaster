@@ -34,6 +34,7 @@ Among them:
 
 To avoid uploading the original data to GitHub, the project excludes CSV data files through `.gitignore`.
 
+## 3. Project Structure
 ```text
 
 Data-Engineering-titanic-disaster/
@@ -692,7 +693,7 @@ main
 
 All major modifications were merged through Pull Request, and the complete version control history was retained.
 
-This project completed 10 Pull Request Merges.
+All major project changes were integrated through GitHub Pull Requests.
 
 ## 14. Project Summary (Conclusion)
 
